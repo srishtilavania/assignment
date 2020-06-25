@@ -1,7 +1,7 @@
 import React from "react";
 class Login extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,7 +23,7 @@ class Login extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-
+    console.log(this.props.email);
     var formJSON = {
       email: this.state.email,
       password: this.state.password,

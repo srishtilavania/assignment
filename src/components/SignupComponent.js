@@ -1,193 +1,163 @@
 import React from "react";
 class SignUp extends React.Component {
-    constructor() {
-        super();
-        this.onChangeName = this.onChangeName.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.state = {
-            email: "",
-            name: "",
-            password: "",
-            confirmPassword: "",
+  constructor(props) {
+    super(props);
+    this.onChangeName = this.onChangeName.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.state = {
+      email: "",
+      name: "",
+      password: "",
+      confirmPassword: "",
 
-            formErrors: {
-                nameErr: "",
-                passwordErr: "",
-            },
-            fieldValidity: {
-                name: false,
-                confirmPassword: false,
-            },
-            formValid: false,
-            successMessage: "",
-        };
-    }
-
-    onChangeName(e) {
-        this.setState({
-            name: e.target.value
-        });
-    }
-
-    onChangeEmail(e) {
-        this.setState({
-            email: e.target.value
-        });
-    }
-
-    onChangePassword(e) {
-        this.setState({
-            password: e.target.value
-        });
-    }
-    validateName = (e) => {
-        const name = e.target.value;
-        var formErrors = this.state.formErrors;
-        var fieldValidity = this.state.fieldValidity;
-        this.setState({
-            name: e.target.value
-        });
-        if (name.length < 6) {
-            formErrors.nameErr = "Name must be at least 6 chars";
-            fieldValidity.name = false;
-        } else {
-            formErrors.nameErr = "";
-            fieldValidity.name = true;
-        }
-        this.setState({
-            fieldValidity: fieldValidity
-        });
-        this.setState({
-            formValid: fieldValidity.name,
-        });
+      formErrors: {
+        nameErr: "",
+        passwordErr: "",
+      },
+      fieldValidity: {
+        name: false,
+        confirmPassword: false,
+      },
+      formValid: false,
+      successMessage: "",
     };
+  }
 
-    validatePassword = (e) => {
-        const password = e.target.value;
-        var formErrors = this.state.formErrors;
-        var fieldValidity = this.state.fieldValidity;
-        this.setState({
-            confirmPassword: e.target.value
-        });
-        console.log(this.state.password);
-        if (this.state.password != password) {
-            formErrors.passwordErr = "Password should match";
-            fieldValidity.confirmPassword = false;
-        } else {
-            formErrors.passwordErr = "";
-            fieldValidity.confirmPassword = true;
-        }
-        this.setState({
-            fieldValidity: fieldValidity
-        });
-        this.setState({
-            formValid: fieldValidity.confirmPassword,
-        });
+  onChangeName(e) {
+    this.setState({
+      name: e.target.value,
+    });
+  }
+
+  onChangeEmail(e) {
+    this.setState({
+      email: e.target.value,
+    });
+  }
+
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value,
+    });
+  }
+  validateName = (e) => {
+    const name = e.target.value;
+    var formErrors = this.state.formErrors;
+    var fieldValidity = this.state.fieldValidity;
+    this.setState({
+      name: e.target.value,
+    });
+    if (name.length < 6) {
+      formErrors.nameErr = "Name must be at least 6 chars";
+      fieldValidity.name = false;
+    } else {
+      formErrors.nameErr = "";
+      fieldValidity.name = true;
+    }
+    this.setState({
+      fieldValidity: fieldValidity,
+    });
+    this.setState({
+      formValid: fieldValidity.name,
+    });
+  };
+
+  validatePassword = (e) => {
+    const password = e.target.value;
+    var formErrors = this.state.formErrors;
+    var fieldValidity = this.state.fieldValidity;
+    this.setState({
+      confirmPassword: e.target.value,
+    });
+    console.log(this.state.password);
+    if (this.state.password != password) {
+      formErrors.passwordErr = "Password should match";
+      fieldValidity.confirmPassword = false;
+    } else {
+      formErrors.passwordErr = "";
+      fieldValidity.confirmPassword = true;
+    }
+    this.setState({
+      fieldValidity: fieldValidity,
+    });
+    this.setState({
+      formValid: fieldValidity.confirmPassword,
+    });
+  };
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    var formJSON = {
+      Name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
     };
+    console.log(JSON.stringify(formJSON));
+  }
 
-    onSubmit(e) {
-        e.preventDefault();
-
-        var formJSON = {
-            Name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-        };
-        console.log(JSON.stringify(formJSON));
-        this.setState({
-            name: "",
-            email: "",
-            password: ""
-        });
-    }
-
-    render() {
-        return ( <
-            div style = {
-                {
-                    width: 500,
-                    margin: "50px auto"
-                }
-            } >
-            <
-            form onSubmit = {
-                this.onSubmit
-            } >
-            <
-            div className = "form-group" >
-            <
-            label > Email < /label> <
-            input type = "email"
-            className = "form-control"
-            value = {
-                this.state.email
-            }
-            onChange = {
-                this.onChangeEmail
-            }
-            /> < /
-            div > <
-            div className = "form-group" >
-            <
-            label > Name < /label> <
-            input type = "name"
-            className = "form-control"
-            value = {
-                this.state.name
-            }
-            onChange = {
-                this.validateName
-            }
-            /> < /
-            div > <
-            span className = "text-danger" > {
-                this.state.formErrors.nameErr
-            } < /span>
-
-            <
-            div className = "form-group" >
-            <
-            label > Password < /label> <
-            input type = "password"
-            className = "form-control"
-            value = {
-                this.state.password
-            }
-            onChange = {
-                this.onChangePassword
-            }
-            /> < /
-            div > <
-            div className = "form-group" >
-            <
-            label > Confirm Password < /label> <
-            input type = "password"
-            className = "form-control"
-            value = {
-                this.state.confirmPassword
-            }
-            onChange = {
-                this.validatePassword
-            }
-            /> < /
-            div > <
-            span className = "text-danger" > {
-                this.state.formErrors.passwordErr
-            } <
-            /span>
-
-            <
-            button type = "submit"
-            disabled = {!this.state.formValid
-            }
-            className = "btn btn-primary btn-block" >
-            Submit <
-            /button> < /
-            form > <
-            /div>
-        );
-    }
+  render() {
+    return (
+      <div
+        style={{
+          width: 500,
+          margin: "50px auto",
+        }}
+      >
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label> Email </label>{" "}
+            <input
+              type="email"
+              className="form-control"
+              value={this.state.email}
+              onChange={this.onChangeEmail}
+            />{" "}
+          </div>{" "}
+          <div className="form-group">
+            <label> Name </label>{" "}
+            <input
+              type="name"
+              className="form-control"
+              value={this.state.name}
+              onChange={this.validateName}
+            />{" "}
+          </div>{" "}
+          <span className="text-danger"> {this.state.formErrors.nameErr} </span>
+          <div className="form-group">
+            <label> Password </label>{" "}
+            <input
+              type="password"
+              className="form-control"
+              value={this.state.password}
+              onChange={this.onChangePassword}
+            />{" "}
+          </div>{" "}
+          <div className="form-group">
+            <label> Confirm Password </label>{" "}
+            <input
+              type="password"
+              className="form-control"
+              value={this.state.confirmPassword}
+              onChange={this.validatePassword}
+            />{" "}
+          </div>{" "}
+          <span className="text-danger">
+            {" "}
+            {this.state.formErrors.passwordErr}{" "}
+          </span>
+          <button
+            type="submit"
+            disabled={!this.state.formValid}
+            className="btn btn-primary btn-block"
+          >
+            Submit{" "}
+          </button>{" "}
+        </form>{" "}
+      </div>
+    );
+  }
 }
 export default SignUp;
