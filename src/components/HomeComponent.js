@@ -121,14 +121,17 @@ class Home extends Component {
           <Header />
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
-              <label> Search </label>{" "}
               <input
                 type="text"
                 value={this.state.search}
-                className="form-control"
+                className="form-control format"
                 onChange={this.onChangeSearch}
+                placeholder="Search with Id"
               />{" "}
-              <button type="submit" className="btn btn-primary btn-block">
+              <button
+                type="submit"
+                className="btn btn-primary btn-block format1"
+              >
                 submit{" "}
               </button>{" "}
               {this.state.showName && (

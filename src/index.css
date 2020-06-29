@@ -54,3 +54,15 @@ code {
     margin-top: 25px;
     color: black;
 }
+
+.format {
+    width: 25%;
+    margin-top: 25px;
+    margin-left: 1000px;
+}
+
+.format1 {
+    width: 25%;
+    margin-top: 10px;
+    margin-left: 1000px;
+}

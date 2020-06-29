@@ -94,6 +94,7 @@ class Login extends React.Component {
                   className="form-control"
                   value={this.state.email}
                   onChange={this.onChangeEmail}
+                  placeholder="Enter Email Id"
                 />{" "}
               </div>{" "}
               <div className="form-group">
@@ -103,6 +104,7 @@ class Login extends React.Component {
                   className="form-control"
                   value={this.state.password}
                   onChange={this.onChangePassword}
+                  placeholder="Enter password"
                 />{" "}
               </div>{" "}
               <button type="submit" className="btn btn-primary btn-block">

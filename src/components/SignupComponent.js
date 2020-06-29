@@ -117,6 +117,7 @@ class SignUp extends React.Component {
                 className="form-control"
                 value={this.state.email}
                 onChange={this.onChangeEmail}
+                placeholder="Enter Email Id"
               />{" "}
             </div>{" "}
             <div className="form-group">
@@ -126,6 +127,7 @@ class SignUp extends React.Component {
                 className="form-control"
                 value={this.state.name}
                 onChange={this.validateName}
+                placeholder="Enter Your Name"
               />{" "}
             </div>{" "}
             <span className="text-danger">
@@ -139,6 +141,7 @@ class SignUp extends React.Component {
                 className="form-control"
                 value={this.state.password}
                 onChange={this.onChangePassword}
+                placeholder="Enter Password"
               />{" "}
             </div>{" "}
             <div className="form-group">
@@ -148,6 +151,7 @@ class SignUp extends React.Component {
                 className="form-control"
                 value={this.state.confirmPassword}
                 onChange={this.validatePassword}
+                placeholder="Re Enter the Password"
               />{" "}
             </div>{" "}
             <span className="text-danger">
