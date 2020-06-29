@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Media } from "reactstrap";
+import Header from "./HeaderComponent";
 
 class Home extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class Home extends Component {
 
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
+    const value = "";
     this.state = {
       error: null,
       isLoaded: false,
@@ -23,6 +24,8 @@ class Home extends Component {
 
   onChangeSearch(e) {
     this.setState({ search: e.target.value });
+    this.value = e.target.value;
+    console.log("gggg" + this.value);
   }
 
   onSubmit(e) {
@@ -35,8 +38,8 @@ class Home extends Component {
     this.componentDidMount();
   }
   componentDidMount() {
-    console.log("dd" + this.state.search);
-    const a = this.state.search;
+    console.log("dd" + this.value);
+    const a = this.value;
     console.log(a);
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((res) => res.json())
@@ -75,9 +78,9 @@ class Home extends Component {
     const { error, isLoaded, info } = this.state;
 
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div> Error: {error.message} </div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div> Loading... </div>;
     } else {
       console.log(this.state.info[0].id);
       console.log(this.state.info.length);
@@ -88,12 +91,11 @@ class Home extends Component {
             <div key={dish.id} className="col-12 mt-5">
               <Media tag="li">
                 <Media body className="ml-5">
-                  <Media heading>Title:- {dish.title}</Media>
-                  <p>Id:- {dish.id}</p>
-                  <p>User Id:- {dish.userId}</p>
-                  <p>Body:- {dish.body}</p>
-                </Media>
-              </Media>
+                  <Media heading> Title: -{dish.title} </Media>{" "}
+                  <p> Id: -{dish.id} </p> <p> User Id: -{dish.userId} </p>{" "}
+                  <p> Body: -{dish.body} </p>{" "}
+                </Media>{" "}
+              </Media>{" "}
             </div>
           );
         }
@@ -104,12 +106,11 @@ class Home extends Component {
             <div key={dish.id} className="col-12 mt-5">
               <Media tag="li">
                 <Media body className="ml-5">
-                  <Media heading>Title:- {dish.title}</Media>
-                  <p>Id:- {dish.id}</p>
-                  <p>User Id:- {dish.userId}</p>
-                  <p>Body:- {dish.body}</p>
-                </Media>
-              </Media>
+                  <Media heading> Title: -{dish.title} </Media>{" "}
+                  <p> Id: -{dish.id} </p> <p> User Id: -{dish.userId} </p>{" "}
+                  <p> Body: -{dish.body} </p>{" "}
+                </Media>{" "}
+              </Media>{" "}
             </div>
           );
         }
@@ -117,6 +118,7 @@ class Home extends Component {
 
       return (
         <div>
+          <Header />
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label> Search </label>{" "}
@@ -125,39 +127,38 @@ class Home extends Component {
                 value={this.state.search}
                 className="form-control"
                 onChange={this.onChangeSearch}
-              />
+              />{" "}
               <button type="submit" className="btn btn-primary btn-block">
-                submit
-              </button>
+                submit{" "}
+              </button>{" "}
               {this.state.showName && (
                 <p>
                   <Media tag="li">
                     <Media body className="ml-5">
                       <Media heading>
-                        Title:- {this.state.idInfo[0].title}
-                      </Media>
-                      <p>Id:- {this.state.idInfo[0].id}</p>
-                      <p>User Id:- {this.state.idInfo[0].userId}</p>
-                      <p>Body:- {this.state.idInfo[0].body}</p>
-                    </Media>
-                  </Media>
+                        Title: -{this.state.idInfo[0].title}{" "}
+                      </Media>{" "}
+                      <p> Id: -{this.state.idInfo[0].id} </p>{" "}
+                      <p> User Id: -{this.state.idInfo[0].userId} </p>{" "}
+                      <p> Body: -{this.state.idInfo[0].body} </p>{" "}
+                    </Media>{" "}
+                  </Media>{" "}
                 </p>
-              )}
-            </div>
-          </form>
+              )}{" "}
+            </div>{" "}
+          </form>{" "}
           <div className="container">
             <div className="row">
               <Media Heading className="heading">
-                First 10 Records
+                First 10 Records{" "}
               </Media>
-
-              <Media list>{first}</Media>
+              <Media list> {first} </Media>{" "}
               <Media Heading className="heading">
-                Last 10 Records
-              </Media>
-              <Media list>{second}</Media>
-            </div>
-          </div>
+                Last 10 Records{" "}
+              </Media>{" "}
+              <Media list> {second} </Media>{" "}
+            </div>{" "}
+          </div>{" "}
         </div>
       );
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./HeaderComponent";
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -100,62 +101,68 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div
-        style={{
-          width: 500,
-          margin: "50px auto",
-        }}
-      >
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label> Email </label>{" "}
-            <input
-              type="email"
-              className="form-control"
-              value={this.state.email}
-              onChange={this.onChangeEmail}
-            />{" "}
-          </div>{" "}
-          <div className="form-group">
-            <label> Name </label>{" "}
-            <input
-              type="name"
-              className="form-control"
-              value={this.state.name}
-              onChange={this.validateName}
-            />{" "}
-          </div>{" "}
-          <span className="text-danger"> {this.state.formErrors.nameErr} </span>
-          <div className="form-group">
-            <label> Password </label>{" "}
-            <input
-              type="password"
-              className="form-control"
-              value={this.state.password}
-              onChange={this.onChangePassword}
-            />{" "}
-          </div>{" "}
-          <div className="form-group">
-            <label> Confirm Password </label>{" "}
-            <input
-              type="password"
-              className="form-control"
-              value={this.state.confirmPassword}
-              onChange={this.validatePassword}
-            />{" "}
-          </div>{" "}
-          <span className="text-danger">
-            {" "}
-            {this.state.formErrors.passwordErr}{" "}
-          </span>
-          <button
-            type="submit"
-            disabled={!this.state.formValid}
-            className="btn btn-primary btn-block"
-          >
-            Submit{" "}
-          </button>{" "}
-        </form>{" "}
+      <div>
+        <Header />
+        <div
+          style={{
+            width: 500,
+            margin: "50px auto",
+          }}
+        >
+          <form onSubmit={this.onSubmit}>
+            <div className="form-group">
+              <label> Email </label>{" "}
+              <input
+                type="email"
+                className="form-control"
+                value={this.state.email}
+                onChange={this.onChangeEmail}
+              />{" "}
+            </div>{" "}
+            <div className="form-group">
+              <label> Name </label>{" "}
+              <input
+                type="name"
+                className="form-control"
+                value={this.state.name}
+                onChange={this.validateName}
+              />{" "}
+            </div>{" "}
+            <span className="text-danger">
+              {" "}
+              {this.state.formErrors.nameErr}{" "}
+            </span>{" "}
+            <div className="form-group">
+              <label> Password </label>{" "}
+              <input
+                type="password"
+                className="form-control"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+              />{" "}
+            </div>{" "}
+            <div className="form-group">
+              <label> Confirm Password </label>{" "}
+              <input
+                type="password"
+                className="form-control"
+                value={this.state.confirmPassword}
+                onChange={this.validatePassword}
+              />{" "}
+            </div>{" "}
+            <span className="text-danger">
+              {" "}
+              {this.state.formErrors.passwordErr}{" "}
+            </span>{" "}
+            <button
+              type="submit"
+              disabled={!this.state.formValid}
+              className="btn btn-primary btn-block"
+            >
+              Submit{" "}
+            </button>{" "}
+          </form>{" "}
+        </div>{" "}
       </div>
     );
   }

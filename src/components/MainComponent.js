@@ -8,6 +8,11 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 class Main extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      email: "",
+      name: "",
+      password: "",
+    };
   }
 
   render() {
@@ -17,17 +22,18 @@ class Main extends Component {
 
     return (
       <div>
-        <Header />
         <Switch>
-          <Route path="/home" component={HomePage} />
-          <Route exact path="/signUp" component={() => <SignUp />} />
+          <Route path="/home" component={HomePage} />{" "}
+          <Route exact path="/signUp" component={() => <SignUp />} />{" "}
           <Route
             exact
             path="/login"
-            component={() => <Login email={this.props.email} password="sri" />}
-          />
+            component={() => (
+              <Login email1="srish@sg" password1="sri" name="Srishti" />
+            )}
+          />{" "}
           <Redirect to="/home" />
-        </Switch>
+        </Switch>{" "}
       </div>
     );
   }
