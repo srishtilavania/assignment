@@ -97,6 +97,7 @@ class SignUp extends React.Component {
       password: this.state.password,
     };
     console.log(JSON.stringify(formJSON));
+    this.props.onSignUp(this.state.email, this.state.name, this.state.password);
   }
 
   render() {
@@ -166,6 +167,7 @@ class SignUp extends React.Component {
               Submit{" "}
             </button>{" "}
           </form>{" "}
+          
         </div>{" "}
       </div>
     );

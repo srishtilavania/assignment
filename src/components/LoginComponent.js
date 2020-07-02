@@ -36,7 +36,9 @@ class Login extends React.Component {
   }
 
   onChangeEmail(e) {
-    this.setState({ email: e.target.value });
+    this.setState({
+      email: e.target.value,
+    });
   }
 
   onChangePassword(e) {
@@ -53,6 +55,9 @@ class Login extends React.Component {
       password: this.state.password,
     };
     console.log(JSON.stringify(formJSON));
+    console.log("new");
+    console.log(this.props.email1);
+    console.log(this.props.password1);
     this.setState({
       email: "",
       password: "",
@@ -85,6 +90,7 @@ class Login extends React.Component {
             margin: "50px auto",
           }}
         >
+          {" "}
           {this.state.showForm && (
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
@@ -108,11 +114,10 @@ class Login extends React.Component {
                 />{" "}
               </div>{" "}
               <button type="submit" className="btn btn-primary btn-block">
-                submit
+                submit{" "}
               </button>{" "}
             </form>
           )}
-
           {this.state.showName && (
             <Navbar expand="md" className="navbar">
               <Nav>
@@ -121,27 +126,26 @@ class Login extends React.Component {
               <div className="container">
                 <Nav>
                   <NavLink className="nav-link" to="/home">
-                    Home
-                  </NavLink>
+                    Home{" "}
+                  </NavLink>{" "}
                 </Nav>{" "}
                 <span className="fa fa-sign-in fa-lg"> </span> Hi!{" "}
-                {this.props.name}
-              </div>
+                {this.props.name}{" "}
+              </div>{" "}
             </Navbar>
           )}
-
           {this.state.showName && (
             <p>
               <Media tag="li">
                 <Media body className="ml-5">
                   <Media heading>
-                    Login Successfully! welcome! {this.props.name}
-                  </Media>
-                </Media>
-              </Media>
+                    Login Successfully!welcome!{this.props.name}{" "}
+                  </Media>{" "}
+                </Media>{" "}
+              </Media>{" "}
             </p>
-          )}
-        </div>
+          )}{" "}
+        </div>{" "}
       </div>
     );
   }
